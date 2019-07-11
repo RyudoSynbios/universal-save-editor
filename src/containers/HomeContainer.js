@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Card, { CardMedia } from 'material-ui/Card';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
 
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import config from '../config';
 
@@ -20,7 +21,7 @@ const styles = {
 const HomeContainer = ({ classes }) => (
   <div>
     {config.games.map(game => (
-      <Card className={classes.card}>
+      <Card key={game} className={classes.card}>
         <CardMedia component={Link} to={`editor/${game}`} className={classes.media} image={`/img/home/${game}.png`} title={game} />
       </Card>
     ))}

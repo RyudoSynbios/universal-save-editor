@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import AppBar from 'material-ui/AppBar';
-import Avatar from 'material-ui/Avatar';
-import CloseIcon from 'material-ui-icons/Close';
-import IconButton from 'material-ui/IconButton';
-import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import blue from 'material-ui/colors/blue';
-import SaveIcon from 'material-ui-icons/Save';
-import Snackbar from 'material-ui/Snackbar';
-import Tabs, { Tab } from 'material-ui/Tabs';
+import AppBar from '@material-ui/core/AppBar';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
+import Snackbar from '@material-ui/core/Snackbar';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import TextField from '@material-ui/core/TextField';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
-import { withStyles } from 'material-ui/styles';
+import blue from '@material-ui/core/colors/blue';
+
+import CloseIcon from '@material-ui/icons/Close';
+import SaveIcon from '@material-ui/icons/Save';
+
+import { withStyles } from '@material-ui/core/styles';
 
 import HexEditor from '../utils/hexEditor';
 
@@ -22,8 +25,8 @@ import config from '../games/AGB_A2CP_EUR';
 
 const styles = theme => ({
   root: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
     marginLeft: 'auto',
     marginRight: 'auto',
     width: 900,
@@ -71,8 +74,8 @@ const styles = theme => ({
   },
   textField: {
     flexBasis: '25%',
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
   },
 });
 
@@ -259,7 +262,7 @@ class EditorContainer extends Component {
         <Paper className={classes.root}>
           <Toolbar className={classes.toolbar}>
             <Avatar src={`/img/icons/${config.informations.id}.png`} className={classes.avatar} />
-            <Typography variant="title" color="inherit" className={classes.title}>
+            <Typography color="inherit" component="div" variant="h6" className={classes.title}>
               {config.informations.name}
             </Typography>
             {saveLoaded ? (
@@ -275,7 +278,7 @@ class EditorContainer extends Component {
             <div className={!saveLoaded ? classes.hidden : null}>
               {Object.keys(config.sections).map(section => (
                 <div key={section} className={classes.category}>
-                  <Typography variant="title">{config.sections[section].name}</Typography>
+                  <Typography component="div" variant="h6">{config.sections[section].name}</Typography>
                   <div className={classes.fields}>
                     {config.sections[section].tabs ? (
                       <div className={classes.tab}>
